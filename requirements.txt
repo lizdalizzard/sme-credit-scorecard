@@ -1,0 +1,10 @@
+pandas
+numpy
+scikit-learn
+category_encoders
+joblib
+matplotlib
+seaborn
+shap
+streamlit
+python-dotenv
