@@ -1,1 +1,5 @@
-"*.csv`n*.zip`nvenv/`n.env`n__pycache__/" 
+*.csv
+*.zip
+venv/
+.env
+__pycache__/

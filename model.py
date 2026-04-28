@@ -16,10 +16,10 @@ from data_prep import load_and_clean_data
 sns.set_theme(style="whitegrid")
 main_color = "#2c3e50" # Professional Navy Blue
 
-# 1. Load and Process Data
+# 1. Loading and Processing Data
 df = load_and_clean_data('application_train.csv')
 
-# 2. Setup Features and Target
+# 2. Setting up Features and Target
 X = df.drop('Default_Label', axis=1)
 y = df['Default_Label']
 
@@ -44,7 +44,7 @@ def to_credit_score(p):
     return 300 + (1 - p) * 550
 
 # ==========================================
-# PHASE 3: BI VISUALIZATIONS FOR NOTION
+# PHASE 3: VISUALIZATIONS 
 # ==========================================
 print("--- Generating Professional Visuals ---")
 
@@ -64,9 +64,9 @@ plt.xlabel("Strength of Influence on Final Score", fontsize=12)
 plt.ylabel("")
 sns.despine(left=True, bottom=True)
 plt.tight_layout()
-plt.savefig("risk_drivers_analysis.png")
+plt.savefig("assets/risk_drivers_analysis.png")
 
-# --- VISUAL 2: PORTFOLIO RISK DISTRIBUTION (Dynamic Donut Chart) ---
+# --- VISUAL 2: RISK DISTRIBUTION (Dynamic Donut Chart) ---
 test_scores = [to_credit_score(p) for p in probs]
 risk_labels = []
 
@@ -98,7 +98,7 @@ fig = plt.gcf()
 fig.gca().add_artist(centre_circle)
 plt.title("Portfolio Risk Composition", fontsize=16, fontweight='bold')
 plt.tight_layout()
-plt.savefig("portfolio_risk_distribution.png")
+plt.savefig("assets/portfolio_risk_distribution.png")
 
 # --- VISUAL 3: RECESSION STRESS TEST (Comparison) ---
 X_stressed = X_test_woe.copy()
@@ -119,18 +119,18 @@ for p in ax.patches:
     ax.annotate(f'{p.get_height():.2f}', (p.get_x() + p.get_width() / 2., p.get_height()), 
                 ha='center', va='bottom', fontsize=12, fontweight='bold')
 plt.tight_layout()
-plt.savefig("recession_stress_test.png")
+plt.savefig("assets/recession_stress_test.png")
 
 print("\n" + "="*40)
 print("PROJECT 01: AUDIT COMPLETE")
 print("="*40)
 print(f"Base Predictive Power (Gini): {gini:.2f}")
 print(f"Stress-Tested Power (Gini):  {stressed_gini:.2f}")
-print("Check your folder for 3 PNG files and upload them to Notion!")
+print("Check the 'assets' folder for 3 PNG files ")
 print("="*40)
 
 # Save the trained model and encoder
-joblib.dump(model, 'credit_model.joblib')
-joblib.dump(encoder, 'woe_encoder.joblib')
+joblib.dump(model, 'models/credit_model.joblib')
+joblib.dump(encoder, 'models/woe_encoder.joblib')
 
-print("Model saved as credit_model.joblib")
+print("Model saved as credit_model.joblib") 

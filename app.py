@@ -7,8 +7,8 @@ st.set_page_config(page_title="SME Underwriting Portal", layout="wide")
 
 @st.cache_resource
 def load_model_assets():
-    model = joblib.load('credit_model.joblib')
-    encoder = joblib.load('woe_encoder.joblib')
+    model = joblib.load('models/credit_model.joblib')
+    encoder = joblib.load('models/woe_encoder.joblib')
     return model, encoder
 
 try:
@@ -16,7 +16,7 @@ try:
 except:
     st.error("Missing model files.")
 
-# --- 2. THE "SATISFYING" UI/UX CSS ---
+# --- 2. THE UI with CSS ---
 st.markdown("""
     <style>
     /* 1. Force the background to a soft, satisfying Mint-Blue */
@@ -119,7 +119,7 @@ with col_main:
         prob = credit_model.predict_proba(input_woe)[:, 1][0]
         score = int(300 + (1 - prob) * 550)
 
-        # Categorize decision
+        # Categorise decision
         if score > 820:
             status, color, rec = "LOW RISK", "#2ecc71", "Auto-Approve"
         elif score > 800:
@@ -142,5 +142,5 @@ with col_main:
             </div>
         """, unsafe_allow_html=True)
     else:
-        # Placeholder that matches the theme
+        # Placeholder 
         st.info("👈 Enter business parameters in the sidebar to generate a new credit assessment report.")

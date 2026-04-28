@@ -5,7 +5,7 @@ def load_and_clean_data(file_path):
     # 1. Load raw data
     df = pd.read_csv(file_path)
     
-    # 2. Select columns & Rename them for Business Clarity
+    # 2. Selecting columns & Renaming them for Business Clarity
     mapping = {
         'TARGET': 'Default_Label',
         'AMT_INCOME_TOTAL': 'Annual_Revenue',
@@ -27,7 +27,7 @@ def load_and_clean_data(file_path):
     # Loan-to-Value (LTV) 
     df['LTV_Ratio'] = df['Requested_Loan'] / df['Asset_Value']
     
-    # Convert negative days to positive years for 'Business Age'
+    # Converting negative days to positive years for 'Business Age'
     df['Business_Age_Years'] = abs(df['Days_In_Business']) / 365
     
     # Cleanup: Remove the messy 'Days' columns
