@@ -8,7 +8,7 @@
 
 ---
 
-### Project Structure
+### Project Structure (The Waterfall)
 ```text
 sme-credit-scorecard/
 ├── app.py                # Live Streamlit Dashboard UI
