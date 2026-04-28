@@ -4,7 +4,7 @@
 
 ---
 
-### 🚀 [Click Here to View Live Dashboard](PASTE_YOUR_STREAMLIT_LINK_HERE)
+### 🚀 [Click Here to View Live Dashboard](https://sme-credit-scorecard-be8ub8urocaxwgtprzc3az.streamlit.app/)
 
 ---
 
